@@ -21,7 +21,7 @@ public class UpdateUserFormController {
 
     private final UserRepository userRepository;
 
-    @GetMapping("/user/updateForm")
+//    @GetMapping("/user/updateForm")
     public String updateForm(HttpServletRequest request, Model model) {
 
         String userId = request.getParameter("userId");

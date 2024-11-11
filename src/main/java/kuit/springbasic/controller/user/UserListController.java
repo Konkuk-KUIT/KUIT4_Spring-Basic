@@ -17,7 +17,7 @@ public class UserListController {
 
     private final UserRepository userRepository;
 
-    @GetMapping("/user/list")
+//    @GetMapping("/user/list")
     public String showUserList(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
 

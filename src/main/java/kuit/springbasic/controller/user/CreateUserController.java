@@ -15,7 +15,7 @@ public class CreateUserController {
 
     private final UserRepository userRepository;
 
-    @PostMapping("/user/signup")
+//    @PostMapping("/user/signup")
     public String createUser(@ModelAttribute User user) {
         userRepository.insert(user);
         return "redirect:/user/list";

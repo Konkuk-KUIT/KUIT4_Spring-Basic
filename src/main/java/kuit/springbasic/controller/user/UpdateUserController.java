@@ -19,7 +19,7 @@ public class UpdateUserController {
 
     private final UserRepository userRepository;
 
-    @PostMapping("/user/update")
+//    @PostMapping("/user/update")
     public String updateUser(@ModelAttribute User user, HttpServletRequest request) {
         userRepository.update(user);
 

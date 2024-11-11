@@ -9,12 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ForwardController {
 
-    @GetMapping("/user/form")
-    public String showForm() {
-        log.info("showForm");
-        return "/user/form";
-    }
-
     @GetMapping("/user/loginForm")
     public String showLoginForm() {
         log.info("showLoginForm");
