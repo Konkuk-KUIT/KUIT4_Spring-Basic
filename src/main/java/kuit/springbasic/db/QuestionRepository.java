@@ -1,7 +1,6 @@
 package kuit.springbasic.db;
 
 import kuit.springbasic.domain.Question;
-import kuit.springbasic.domain.User;
 
 import java.util.Collection;
 
