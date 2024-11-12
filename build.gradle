@@ -39,8 +39,13 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation('org.apache.commons:commons-dbcp2:2.9.0')
+
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+tasks.withType(JavaCompile) {
+	options.compilerArgs << '-parameters'
+}
+
