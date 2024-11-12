@@ -16,7 +16,14 @@ function addAnswer(e) {
 
 function onSuccess(json, status){
     var answerTemplate = $("#answerTemplate").html();
-    var template = answerTemplate.format(json.answer.writer, new Date(json.answer.createdDate), json.answer.contents, json.answer.answerId, json.answer.answerId);
+    var template = answerTemplate.format(
+        json.writer,
+        new Date(json.createdDate),
+        json.contents,
+        json.answerId,
+        json.answerId
+    );
+//    var template = answerTemplate.format(json.answer.writer, new Date(json.answer.createdDate), json.answer.contents, json.answer.answerId, json.answer.answerId);
     $(".qna-comment-kuit-articles").prepend(template);
     var countOfAnswer = document.getElementsByTagName("strong").item(0);
     let number = parseInt(countOfAnswer.innerText,10);
