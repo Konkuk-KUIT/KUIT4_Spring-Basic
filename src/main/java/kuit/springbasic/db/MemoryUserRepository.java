@@ -18,7 +18,6 @@ public class MemoryUserRepository implements UserRepository {
         insert(new User("kuit","kuit","쿠잇","kuit@kuit.com"));
     }
 
-
     public void insert(User user) {
         users.put(user.getUserId(), user);
     }
