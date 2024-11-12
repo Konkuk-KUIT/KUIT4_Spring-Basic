@@ -1,9 +1,16 @@
 package kuit.springbasic.domain;
 
 
+import lombok.*;
+
 import java.sql.Date;
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Question {
     private int questionId;
     private String writer;
@@ -12,18 +19,6 @@ public class Question {
     private Date createdDate;
     private int countOfAnswer;
 
-    public Question() {
-
-    }
-
-    public Question(int questionId, String writer, String title, String contents, Date createdDate, int countOfAnswer) {
-        this.questionId = questionId;
-        this.writer = writer;
-        this.title = title;
-        this.contents = contents;
-        this.createdDate = createdDate;
-        this.countOfAnswer = countOfAnswer;
-    }
 
     public Question(String writer, String title, String contents, int countOfAnswer) {
         this.questionId = 0;
@@ -31,54 +26,6 @@ public class Question {
         this.title = title;
         this.contents = contents;
         this.createdDate = Date.valueOf(LocalDate.now());
-        this.countOfAnswer = countOfAnswer;
-    }
-
-    public int getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
-    }
-
-    public String getWriter() {
-        return writer;
-    }
-
-    public void setWriter(String writer) {
-        this.writer = writer;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContents() {
-        return contents;
-    }
-
-    public void setContents(String contents) {
-        this.contents = contents;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public int getCountOfAnswer() {
-        return countOfAnswer;
-    }
-
-    public void setCountOfAnswer(int countOfAnswer) {
         this.countOfAnswer = countOfAnswer;
     }
 
@@ -90,7 +37,6 @@ public class Question {
     public void increaseCountOfAnswer() {
         countOfAnswer += 1;
     }
-
     public void decreaseCountOfAnswer() {
         countOfAnswer -= 1;
     }
@@ -110,15 +56,4 @@ public class Question {
         this.countOfAnswer = question.countOfAnswer;
     }
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "questionId=" + questionId +
-                ", writer='" + writer + '\'' +
-                ", title='" + title + '\'' +
-                ", contents='" + contents + '\'' +
-                ", createdDate=" + createdDate +
-                ", countOfAnswer=" + countOfAnswer +
-                '}';
-    }
 }

@@ -15,8 +15,8 @@ public class MemoryAnswerRepository implements AnswerRepository {
     private static int PK = 0;
 
     public MemoryAnswerRepository() {
-        insert(new Answer(0, "박성현", "저는 막내지만 팀장 맡는 것을 좋아한답니다. 팀장은 모두 잘생긴 제게 맡겨주세요^^~~!!"));
-        insert(new Answer(1, "김윤서", "?? 내가 더 잘하는데 ??"));
+        insert(new Answer(1, "박성현", "저는 막내지만 팀장 맡는 것을 좋아한답니다. 팀장은 모두 잘생긴 제게 맡겨주세요^^~~!!"));
+        insert(new Answer(2, "김윤서", "?? 내가 더 잘하는데 ??"));
     }
 
     public int getPK() {
