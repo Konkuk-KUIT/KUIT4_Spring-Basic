@@ -20,12 +20,13 @@ public class HomeController {
 
     private final QuestionRepository questionRepository;
 
-    /**
+/**
      * TODO: showHome
      * showHomeV1 : parameter - HttpServletRequest, HttpServletResponse / return - ModelAndView
      * showHomeV2 : parameter - none / return - ModelAndView
      * showHomeV3 : parameter - Model / return - String
      */
+
     @RequestMapping("/homeV1")
     public ModelAndView showHomeV1(HttpServletRequest request, HttpServletResponse response) {
         log.info("showHomeV1");
@@ -45,7 +46,7 @@ public class HomeController {
         return mav;
     }
 
-    @RequestMapping("/homeV3")
+    @RequestMapping("/")
     public String showHomeV3(Model model) {
         log.info("showHomeV3");
         Collection<Question> questions = questionRepository.findAll();
