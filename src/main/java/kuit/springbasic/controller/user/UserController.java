@@ -36,7 +36,7 @@ public class UserController {
      * createUserV1 : @RequestParam
      * createUserV2 : @ModelAttribute
      */
-    @PostMapping("/signup")
+//    @PostMapping("/signup")
     public String createUserV1(@RequestParam String userId,
                                @RequestParam String password,
                                @RequestParam String name,
@@ -47,9 +47,10 @@ public class UserController {
         return "redirect:/user/list";
     }
 
-//    @PostMapping("/signup")
+    @PostMapping("/signup")
     public String createUserV2(@ModelAttribute User user) {
         log.info("createUserV2");
+        log.info(user.toString());
         userRepository.insert(user);
         return "redirect:/user/list";
     }

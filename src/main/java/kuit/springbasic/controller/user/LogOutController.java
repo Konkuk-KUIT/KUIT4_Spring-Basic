@@ -14,7 +14,6 @@ import static kuit.springbasic.util.UserSessionUtils.USER_SESSION_KEY;
 @RequestMapping("/user")
 public class LogOutController {
 
-
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession();

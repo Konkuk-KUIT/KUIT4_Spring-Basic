@@ -19,6 +19,17 @@ public class LoginController {
 
     private final UserRepository userRepository;
 
+    @GetMapping("/loginForm")
+    public String showLoginForm() {
+        log.info("showLoginForm");
+        return "/user/login";
+    }
+
+    @GetMapping("/loginFailed")
+    public String showLoginFailed() {
+        log.info("showLoginFailed");
+        return "/user/loginFailed";
+    }
 
 
     /**
@@ -29,7 +40,7 @@ public class LoginController {
      * loginV4 : @ModelAttribute
      */
 
-//    @RequestMapping("/user/login")
+//    @RequestMapping("/login")
     public String loginV1(@RequestParam("userId") String userId,      // login.jsp 에서 name = userId, name = password 항목에 작성한 데이터를 받아올 수 있음.
                           @RequestParam("password") String password,  // 받아온 데이터를 담을 변수의 타입과 변수명을 지정해줘야함
                           HttpServletRequest request) {
@@ -39,7 +50,7 @@ public class LoginController {
 
         if (user != null && user.isSameUser(loggedInUser)) {
             HttpSession session = request.getSession();
-            session.setAttribute(USER_SESSION_KEY, loggedInUser);
+            session.setAttribute(USER_SESSION_KEY, user);
             return "redirect:/";
         }
 
@@ -47,7 +58,7 @@ public class LoginController {
     }
 
 
-//    @RequestMapping("/user/login")
+//    @RequestMapping("/login")
     public String loginV2(@RequestParam String userId,      // RequestParam은 key값과 변수명이 동일하다면 key값을 "userId" 와 같이 명시해주지 않아도 자동 매핑됨
                           @RequestParam String password,
                           HttpServletRequest request) {
@@ -57,7 +68,7 @@ public class LoginController {
 
         if (user != null && user.isSameUser(loggedInUser)) {
             HttpSession session = request.getSession();
-            session.setAttribute(USER_SESSION_KEY, loggedInUser);
+            session.setAttribute(USER_SESSION_KEY, user);
             return "redirect:/";
         }
 
@@ -65,7 +76,7 @@ public class LoginController {
     }
 
 
-//    @RequestMapping("/user/login")
+//    @RequestMapping("/login")
     public String loginV3(String userId,      // key값과 변수명이 같다면 @RequestParam을 제거해도 된다. 하지만 이 경우 협업자들이 코드를 이해하기 힘들어져서 지양하는 것이 좋다.
                           String password,
                           HttpServletRequest request) {
@@ -75,7 +86,7 @@ public class LoginController {
 
         if (user != null && user.isSameUser(loggedInUser)) {
             HttpSession session = request.getSession();
-            session.setAttribute(USER_SESSION_KEY, loggedInUser);
+            session.setAttribute(USER_SESSION_KEY, user);
             return "redirect:/";
         }
 
@@ -92,7 +103,9 @@ public class LoginController {
 
         if (user != null && user.isSameUser(loggedInUser)) {
             HttpSession session = request.getSession();
-            session.setAttribute(USER_SESSION_KEY, loggedInUser);
+            session.setAttribute(USER_SESSION_KEY, user);
+            // session에 setAttribute를 할 때 loggedInUser를 집어넣으면 안됨. 왜냐면 이 loggedinUser에는 id, password 정보만 있지
+            // name 정보가 없기 때문이다.
             return "redirect:/";
         }
 
