@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 import static kuit.springbasic.util.UserSessionUtils.USER_SESSION_KEY;
 
 @Slf4j
@@ -39,7 +42,7 @@ public class QuestionController {
      * createQuestionV1 : @RequestParam
      * createQuestionV2 : @ModelAttribute
      */
-//    @PostMapping("/create")
+    @PostMapping("/create")
     public String createQuestionV1(@RequestParam String writer,
                                    @RequestParam String title,
                                    @RequestParam String contents) {
@@ -49,9 +52,10 @@ public class QuestionController {
 //        log.info("saved question title: " + question.getTitle());
         return "redirect:/";
     }
-    @PostMapping("/create")
+//    @PostMapping("/create")
     public String createQuestionV2(@ModelAttribute Question question) {
         log.info("createQuestionV2");
+        question.setCreatedDate(Date.valueOf(LocalDate.now()));
         questionRepository.insert(question);
         log.info("saved question title: " + question.getTitle());
         return "redirect:/";
