@@ -62,7 +62,7 @@ public class LoginController {
         return "redirect:/user/loginFailed";
     }
 
-//    @RequestMapping("/user/login")
+    //    @RequestMapping("/user/login")
     public String loginV2(@RequestParam String userId,
                           @RequestParam String password,
                           HttpServletRequest request) {
@@ -79,7 +79,7 @@ public class LoginController {
         return "redirect:/user/loginFailed";
     }
 
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    //    @RequestMapping(value = "/login", method = RequestMethod.POST)
     @PostMapping("/login")
     public String loginV4(@ModelAttribute User loggedInUser,
                           HttpServletRequest request) {
@@ -98,5 +98,12 @@ public class LoginController {
     /**
      * TODO: logout
      */
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        log.info("logout");
+        HttpSession session = request.getSession();
+        session.removeAttribute(USER_SESSION_KEY);
+        return "redirect:/";
+    }
 
 }
