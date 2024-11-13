@@ -91,8 +91,16 @@ public class LoginController {
         }
         return "redirect:/user/loginFailed";
     }
+
     /**
      * TODO: logout
      */
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        log.info("logout");
+        HttpSession session = request.getSession();
+        session.removeAttribute(USER_SESSION_KEY);
 
+        return "redirect:/";
+    }
 }
