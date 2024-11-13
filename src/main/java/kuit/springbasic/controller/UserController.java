@@ -91,7 +91,7 @@ public class UserController {
                 }
             }
         }
-        return "redirect:/user/loginForm";
+        return "redirect:/user/list";
     }
 
     /**
