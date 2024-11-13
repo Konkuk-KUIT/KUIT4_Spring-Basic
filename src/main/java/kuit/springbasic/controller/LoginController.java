@@ -7,9 +7,7 @@ import kuit.springbasic.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import static kuit.springbasic.util.UserSessionUtils.USER_SESSION_KEY;
 
@@ -25,22 +23,22 @@ public class LoginController {
      * TODO: showLoginForm
      */
 
-    @RequestMapping("/loginForm")
+    @GetMapping("/login")
     public String showLoginForm(){
         log.info("showLoginForm");
         return "/user/login";
     }
+
+
+    /**
+     * TODO: showLoginFailed
+     */
 
     @RequestMapping("/loginFailed")
     public String showLoginFailed(){
         log.info("showLoginFailed");
         return "/user/loginFailed";
     }
-
-    /**
-     * TODO: showLoginFailed
-     */
-
     /**
      * TODO: login
      * loginV1 : @RequestParam("")
@@ -49,7 +47,7 @@ public class LoginController {
      * loginV4 : @ModelAttribute
      */
 
-//    @RequestMapping("/login")
+    @PostMapping("/login")
     public String loginV1(@RequestParam("userId") String userId,
                           @RequestParam("password") String password,
                           HttpServletRequest request){
@@ -100,7 +98,7 @@ public class LoginController {
 
     }
 
-    @RequestMapping("/login")
+//    @RequestMapping("/login")
     public String loginV4(@ModelAttribute User loggedInUser,
                           HttpServletRequest request){
         log.info("loginV4");
