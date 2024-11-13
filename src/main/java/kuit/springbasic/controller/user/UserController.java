@@ -1,4 +1,4 @@
-package kuit.springbasic.controller;
+package kuit.springbasic.controller.user;
 
 public class UserController {
 

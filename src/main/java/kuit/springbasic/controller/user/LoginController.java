@@ -1,4 +1,4 @@
-package kuit.springbasic.controller;
+package kuit.springbasic.controller.user;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -10,10 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import static kuit.springbasic.util.UserSessionUtils.USER_SESSION_KEY;
-
-/**
- * TODO: logout
- */
 
 // 스프링이 파라미터를 받는 다양한 방법
 @Slf4j
@@ -28,17 +24,17 @@ public class LoginController {
     // 로그인 화면 조회
     // @RequestMapping에서 HTTP 설정도 가능
     // @RequestMapping(value = "/loginForm", method = RequestMethod.GET)
-    @GetMapping("/loginForm")
+    @GetMapping("/login")
     public String showLoginForm() {
         log.info("showLoginForm");
-        return "/user/login"; // WEB_INF 파일을 시작으로 user/login.jsp 파일 존재하므로
+        return "user/login"; // WEB_INF 파일을 시작으로 user/login.jsp 파일 존재하므로
     }
 
     // TODO: showLoginFailed
     @RequestMapping("/loginFailed")
     public String showLoginFailed() {
         log.info("showLoginFailed");
-        return "/user/loginFailed";
+        return "user/loginFailed";
     }
 
     // Todo : login
