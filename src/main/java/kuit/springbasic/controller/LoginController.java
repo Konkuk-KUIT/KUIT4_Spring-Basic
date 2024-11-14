@@ -45,7 +45,7 @@ public class LoginController {
      * loginV3 : @RequestParam 생략(비추천)
      * loginV4 : @ModelAttribute
      */
-//    @RequestMapping("/user/login")
+//    @RequestMapping("/login")
     public String loginV1(@RequestParam("userId") String userId,
                           @RequestParam("password") String password,
                           HttpServletRequest request) {
@@ -55,14 +55,14 @@ public class LoginController {
 
         if (user != null && user.isSameUser(loggedInUser)) {
             HttpSession session = request.getSession();
-            session.setAttribute(USER_SESSION_KEY, loggedInUser);
+            session.setAttribute(USER_SESSION_KEY, user);
             return "redirect:/";
         }
 
         return "redirect:/user/loginFailed";
     }
 
-    //    @RequestMapping("/user/login")
+//        @RequestMapping("/login")
     public String loginV2(@RequestParam String userId,
                           @RequestParam String password,
                           HttpServletRequest request) {
@@ -72,7 +72,7 @@ public class LoginController {
 
         if (user != null && user.isSameUser(loggedInUser)) {
             HttpSession session = request.getSession();
-            session.setAttribute(USER_SESSION_KEY, loggedInUser);
+            session.setAttribute(USER_SESSION_KEY, user);
             return "redirect:/";
         }
 
@@ -88,7 +88,7 @@ public class LoginController {
 
         if (user != null && user.isSameUser(loggedInUser)) {
             HttpSession session = request.getSession();
-            session.setAttribute(USER_SESSION_KEY, loggedInUser);
+            session.setAttribute(USER_SESSION_KEY, user);
             return "redirect:/";
         }
 
