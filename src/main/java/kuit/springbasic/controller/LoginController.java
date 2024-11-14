@@ -22,7 +22,7 @@ public class LoginController {
     /**
      * TODO: showLoginForm
      */
-    @RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+    @RequestMapping(value = {"/loginForm", "/login"}, method = RequestMethod.GET)
     public String showLoginForm(){
         log.info("showLoginForm");
         return "/user/login";
