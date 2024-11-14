@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kuit.springbasic.db.UserRepository;
 import kuit.springbasic.domain.User;
+import kuit.springbasic.util.UserSessionUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,8 @@ public class UserController {
                          @RequestParam("email") String email,
                          HttpServletRequest request){
         log.info("createUser");
+
+        //매개변수 많을 때는 new User보다는 builderPattern 사용 권장; 메서드체이닝 (실수 방지)
         User createdUser = new User(userId, password, name, email);
         userRepository.insert(createdUser);
         return "redirect:/user/list";
@@ -54,9 +57,15 @@ public class UserController {
      * TODO: showUserList
      */
     @RequestMapping("/user/list")
-    public String showUserList() {
+    public String showUserList(HttpServletRequest request) {
         log.info("showUserList");
-        return "/user/list";
+        //id 확인
+        HttpSession session = request.getSession();
+        if (UserSessionUtils.isLoggedIn(session)) {
+            request.setAttribute("users", userRepository.findAll());
+            return "/user/list";
+        }
+        return "/user/login";
     }
 
 /**

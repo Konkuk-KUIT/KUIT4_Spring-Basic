@@ -71,6 +71,8 @@ public class LoginController {
         User loggedInUser = new User(userId, password);
         User user = userRepository.findByUserId(userId);
 
+        //null 사용 말고 optional 객체 사용 권장
+
         if(user != null && user.isSameUser(loggedInUser)){
             HttpSession session = request.getSession();
             session.setAttribute("user", loggedInUser);
