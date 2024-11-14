@@ -96,6 +96,16 @@ public class LoginController {
      * TODO: logout
      */
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) throws IllegalAccessException {
+        log.info("logout");
+        if(session.getAttribute(USER_SESSION_KEY) != null){
+            session.removeAttribute(USER_SESSION_KEY);
+        } else {
+            throw new IllegalAccessException("잘못된 접근입니다.");
+        }
 
+        return "redirect:/";
+    }
 
 }
