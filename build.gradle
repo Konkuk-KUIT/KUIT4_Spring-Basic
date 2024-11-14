@@ -44,3 +44,8 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// 지피티가 추가해줌
+tasks.withType(JavaCompile) {
+	options.compilerArgs << "-parameters"
+}

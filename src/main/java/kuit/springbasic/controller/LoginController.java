@@ -111,8 +111,6 @@ public class LoginController {
         return "redirect:/user/loginFailed";
     }
 
-
-
     /**
      * TODO: logout
      */
