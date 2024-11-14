@@ -10,9 +10,11 @@ import kuit.springbasic.util.UserSessionUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 @RequiredArgsConstructor
@@ -69,11 +71,56 @@ public class QuestionController {
      * showUpdateQuestionFormV1 : @RequestParam, HttpServletRequest, Model
      * showUpdateQuestionFormV2 : @RequestParam, @SessionAttribute, Model
      */
-
-
+    @RequestMapping("/qna/updateForm")
+    public String showUpdateQuestionFormV1(@RequestParam("questionId") int questionId,
+                                           HttpServletRequest request,
+                                           Model model){
+        log.info("show Question - Update form V1");
+        HttpSession session = request.getSession();
+        if(!UserSessionUtils.isLoggedIn(session)){
+            return "redirect:/user/login";
+        }
+        Question question = questionRepository.findByQuestionId(questionId);
+        User user = UserSessionUtils.getUserFromSession(session);
+        if (!question.isSameUser(user)) {
+            return "redirect:/";
+        }
+        model.addAttribute("question", question);
+        return "/qna/updateForm";
+    }
+    @RequestMapping("/qna/updateForm")
+    public String showUpdateQuestionFormV2(@RequestParam("questionId") int questionId,
+                                           @SessionAttribute(name = "user",required = false ) User user,
+                                           Model model){
+        log.info("show Question - Update form V2");
+        if(user==null){
+            return "redirect:/user/login";
+        }
+        Question question = questionRepository.findByQuestionId(questionId);
+        if (!question.isSameUser(user)) {
+            return "redirect:/";
+        }
+        model.addAttribute("question", question);
+        return "/qna/updateForm";
+    }
     /**
      * TODO: updateQuestion
      */
+    @RequestMapping("/qna/update")
+    public String updateQuestion(@RequestParam("questionId") int questionId,
+                                 @RequestParam("title") String title,
+                                 @RequestParam("content") String Content,
+                                 @SessionAttribute("user") User SessionUser){
+        Question question = questionRepository.findByQuestionId(questionId);
+        if (!question.isSameUser(SessionUser)) {
+            throw new IllegalArgumentException("로그인된 유저와 질문 작성자가 다르면 질문을 수정할 수 없습니다.");
+        }
+        question.updateTitleAndContents(title, Content);
+        questionRepository.update(question);
+        return "redirect:/";
+    }
+
+
 
 
 }
