@@ -81,7 +81,7 @@ public class UserController {
     // Todo logout
 
     // 로그아웃 안됨!
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
         if(session != null) {
@@ -147,7 +147,7 @@ public class UserController {
         User user = userRepository.findByUserId(userId);
 
         if(UserSessionUtils.getUserFromSession(request.getSession()).equals(user)) {
-            return "user/update";
+            return "user/updateForm";
         }
         return "redirect:/";
     }
