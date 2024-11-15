@@ -1,7 +1,8 @@
 package kuit.springbasic.controller.qna;
 
-public class AnswerController {
 
+public class AnswerController {
+    }
     /**
      * TODO: addAnswer - @PostMapping
      * addAnswerV0 : @RequestParam, HttpServletResponse
@@ -10,4 +11,4 @@ public class AnswerController {
      * addAnswerV3 : @ModelAttribute, @ResponseBody
      */
 
-}
+    // restful한 URI 고려
