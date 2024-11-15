@@ -1,9 +1,7 @@
 package kuit.springbasic.db;
 
 import kuit.springbasic.domain.Question;
-import kuit.springbasic.domain.User;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface QuestionRepository {
@@ -14,4 +12,6 @@ public interface QuestionRepository {
     List<Question> findAll();
 
     void update(Question question);
+
+    void updateCountOfAnswer(Question question);
 }

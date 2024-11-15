@@ -23,7 +23,6 @@ public class QnaController {
     private final AnswerRepository answerRepository;
     private final QuestionRepository questionRepository;
 
-
     @RequestMapping("/show")
     public String showQnA(@RequestParam int questionId, Model model) throws SQLException {
         log.info("QuestionController.showQnA");
