@@ -13,4 +13,6 @@ public interface QuestionRepository {
     Collection<Question> findAll();
 
     void update(Question question);
+
+    void updateCountOfAnswer(Question question);
 }
