@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -27,8 +28,8 @@ public class MemoryUserRepository implements UserRepository {
         return users.get(userId);
     }
 
-    public Collection<User> findAll() {
-        return users.values();
+    public List<User> findAll() {
+        return (List<User>) users.values();
     }
 
     public void changeUserInfo(User user) {

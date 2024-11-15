@@ -3,6 +3,7 @@ package kuit.springbasic.db;
 import kuit.springbasic.domain.User;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface UserRepository {
 
@@ -10,7 +11,7 @@ public interface UserRepository {
 
     User findByUserId(String userId);
 
-    Collection<User> findAll();
+    List<User> findAll();
 
     void changeUserInfo(User user);
 

@@ -2,11 +2,11 @@ package kuit.springbasic.db;
 
 import kuit.springbasic.domain.Answer;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface AnswerRepository {
     Answer insert(Answer answer);
 
-    Collection<Answer> findAllByQuestionId(int questionId);
+    List<Answer> findAllByQuestionId(int questionId);
 
 }
