@@ -25,6 +25,7 @@ public class QuestionController {
 
     private final QuestionRepository questionRepository;
 
+    @RequestMapping("/form")
     public String showQuestionForm(HttpServletRequest request) {
         log.info("showQuestionForm");
 
