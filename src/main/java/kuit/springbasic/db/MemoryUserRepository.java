@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @Repository
 public class MemoryUserRepository implements UserRepository {
     private Map<String, User> users = new HashMap<>();
