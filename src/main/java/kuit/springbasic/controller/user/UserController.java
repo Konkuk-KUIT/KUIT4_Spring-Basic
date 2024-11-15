@@ -80,7 +80,7 @@ public class UserController {
 
     // Todo logout
 
-    // 로그아웃 안됨!
+    // PostMapping해야할 것 같은데 GetMapping으로 진행 (아마 GetMapping으로 하도록 구현되서 그런듯)
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -94,10 +94,13 @@ public class UserController {
 
     //--------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * TODO: showUserForm
-     */
 
+     // TODO: showUserForm
+    @GetMapping("/form")
+    public String showUserForm(){
+        log.info("show Sign-Up Form");
+        return "user/form";
+    }
     /**
      * TODO: createUser
      * createUserV1 : @RequestParam
@@ -144,9 +147,9 @@ public class UserController {
     public String showUpdateForm(@RequestParam("userId") String userId,
                                  HttpServletRequest request) {
         log.info("Check if possible go to update form");
-        User user = userRepository.findByUserId(userId);
+        User user = userRepository.findByUserId(userId); // 수정하려는 유저
 
-        if(UserSessionUtils.getUserFromSession(request.getSession()).equals(user)) {
+        if(UserSessionUtils.getUserFromSession(request.getSession()).isSameUser(user)) {
             return "user/updateForm";
         }
         return "redirect:/";
