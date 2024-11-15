@@ -86,26 +86,12 @@ public class UserController {
      * updateUserV1 : @RequestParam
      * updateUserV2 : @ModelAttribute
      */
-//    @PostMapping("/update")
-//    public String updateForm(HttpServletRequest request,
-//                             @RequestParam("password") String password,
-//                             @RequestParam("name") String name,
-//                             @RequestParam("email") String email){
-//        log.info("updateForm");
-//
-//        String userId = request.getParameter("userId");
-//        User user = userRepository.findByUserId(userId);
-//        User updateUser = new User(userId, password, name, email);
-//        user.update(updateUser);
-//
-//        return "redirect:/";
-//    }
     @PostMapping("/update")
     public String updateForm(@RequestParam("userId") String userId,
                              @RequestParam("password") String password,
                              @RequestParam("name") String name,
                              @RequestParam("email") String email){
-        log.info("updateForm");
+        log.info("updateUser");
 
         User user = userRepository.findByUserId(userId);
         User updateUser = new User(userId, password, name, email);

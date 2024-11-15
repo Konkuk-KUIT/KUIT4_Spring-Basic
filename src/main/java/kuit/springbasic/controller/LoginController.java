@@ -117,5 +117,10 @@ public class LoginController {
     /**
      * TODO: logout
      */
-
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request){
+        log.info("logout");
+        request.getSession().removeAttribute(USER_SESSION_KEY);
+        return "redirect:/";
+    }
 }
