@@ -2,7 +2,7 @@ package kuit.springbasic.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import kuit.springbasic.db.MemoryUserRepository;
+import kuit.springbasic.db.UserRepository;
 import kuit.springbasic.domain.User;
 import kuit.springbasic.util.UserSessionUtils;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/user")
 public class UserController {
 
-    private final MemoryUserRepository userRepository;
+    private final UserRepository userRepository;
 
     @RequestMapping("/form")
     public String showUserForm() {
